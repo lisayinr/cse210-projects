@@ -20,4 +20,12 @@ public class Entry
     {
         return _date;
     }
+    public string GetPromptText()
+    {
+        return _promptText;
+    }
+    public string GetEntryText()
+    {
+        return _entryText;
+    }
 }

@@ -12,6 +12,7 @@ public class PromptGenerator
             "How did you build your testimony today?",
             "What promptings did you get from the spirit today?"
         };
-        return _prompts;
+        // get randome index "X"
+        return "X";
     }
 }
