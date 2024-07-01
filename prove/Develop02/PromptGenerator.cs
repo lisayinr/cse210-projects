@@ -1,8 +1,9 @@
 public class PromptGenerator
 {
     public List<string> _prompts;
+    public Random _rng = new ();
 
-    public string GetRandomPrompt()
+    public PromptGenerator()
     {
         _prompts = new List<string>
         {
@@ -12,7 +13,10 @@ public class PromptGenerator
             "How did you build your testimony today?",
             "What promptings did you get from the spirit today?"
         };
-        // get randome index "X"
-        return "X";
+    }
+    public string GetRandomPrompt()
+    {
+        int prompt = _rng.Next(_prompts.Count);
+        return _prompts[prompt];
     }
 }

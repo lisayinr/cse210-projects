@@ -2,11 +2,15 @@ using System;
 
 class Program
 {
+    static Journal theJournal = new Journal();
+    static PromptGenerator thePromptGenerator = new PromptGenerator();
     static void Main(string[] args)
     {
-        Journal theJournal = new Journal();
-        Entry anEntry = new Entry();
-        PromptGenerator thePromptGenerator = new PromptGenerator();
+
+        while (true)
+        {
+            Menu();
+        }
     }
     static void Menu()
     {
@@ -25,15 +29,15 @@ class Program
         }
         else if (option == "2")
         {
-            journal.DisplayAll();
+            theJournal.DisplayAll();
         }
         else if (option == "3")
         {
-            SaveJournalToFile();
+            LoadJournalFromFile();
         }
         else if (option == "4")
         {
-            LoadJournalFromFile();
+            SaveJournalToFile();
         }
         else if (option == "5")
         {
@@ -46,23 +50,24 @@ class Program
     }
     static void WriteEntry()
     {
-        string prompt = promptGenerator.GetRandomPrompt();
+        string prompt = thePromptGenerator.GetRandomPrompt();
         Console.WriteLine($"{prompt}");
         string journalEntry = Console.ReadLine();
         Entry entry = new Entry(prompt, journalEntry);
-        journal.AddEntry(entry);
+        theJournal.AddEntry(entry);
     }
     static void SaveJournalToFile()
     {
         Console.WriteLine("File name: ");
         string filename = Console.ReadLine();
+        theJournal.SaveToFile(filename);
         Console.WriteLine("Journal saved.");
     }
     static void LoadJournalFromFile()
     {
         Console.WriteLine("File name: ");
         string filename = Console.ReadLine();
-        Journal.LoadFromFile(filename);
+        theJournal.LoadFromFile(filename);
         Console.WriteLine("Journal loaded.");
     }
 }
